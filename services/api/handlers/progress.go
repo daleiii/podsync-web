@@ -35,6 +35,21 @@ func (h *ProgressHandler) GetProgress(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Check if progress tracker is available
+	if h.progressTracker == nil {
+		// Return empty progress if tracker not initialized
+		response := ProgressResponse{
+			Feeds:    make(map[string]*progress.FeedProgress),
+			Episodes: make([]*progress.EpisodeProgress, 0),
+		}
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(response); err != nil {
+			log.WithError(err).Error("failed to encode empty progress response")
+			http.Error(w, "Internal server error", http.StatusInternalServerError)
+		}
+		return
+	}
+
 	// Optional filter by feed ID
 	feedID := r.URL.Query().Get("feedID")
 
@@ -121,7 +136,12 @@ func (h *ProgressHandler) sendProgressEvent(w http.ResponseWriter, flusher http.
 	var feeds map[string]*progress.FeedProgress
 	var episodes []*progress.EpisodeProgress
 
-	if feedID != "" {
+	// Check if progress tracker is available
+	if h.progressTracker == nil {
+		// Return empty progress if tracker not initialized
+		feeds = make(map[string]*progress.FeedProgress)
+		episodes = make([]*progress.EpisodeProgress, 0)
+	} else if feedID != "" {
 		// Filter by specific feed
 		if fp, ok := h.progressTracker.GetFeedProgress(feedID); ok {
 			feeds = map[string]*progress.FeedProgress{feedID: fp}
