@@ -3,8 +3,8 @@ package ytdl
 import (
 	"testing"
 
-	"github.com/mxpv/podsync/pkg/feed"
-	"github.com/mxpv/podsync/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/feed"
+	"github.com/daleiii/podsync-web/pkg/model"
 
 	"github.com/stretchr/testify/assert"
 )

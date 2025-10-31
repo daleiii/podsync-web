@@ -6,7 +6,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/mxpv/podsync/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/model"
 )
 
 func ParseURL(link string) (model.Info, error) {

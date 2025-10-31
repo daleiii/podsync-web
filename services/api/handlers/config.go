@@ -7,11 +7,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mxpv/podsync/pkg/db"
-	"github.com/mxpv/podsync/pkg/feed"
-	"github.com/mxpv/podsync/pkg/ytdl"
-	"github.com/mxpv/podsync/services/api/models"
-	"github.com/mxpv/podsync/services/web"
+	"github.com/daleiii/podsync-web/pkg/db"
+	"github.com/daleiii/podsync-web/pkg/feed"
+	"github.com/daleiii/podsync-web/pkg/ytdl"
+	"github.com/daleiii/podsync-web/services/api/models"
+	"github.com/daleiii/podsync-web/services/web"
 	"github.com/pelletier/go-toml"
 	log "github.com/sirupsen/logrus"
 )

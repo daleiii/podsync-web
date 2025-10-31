@@ -8,8 +8,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/mxpv/podsync/pkg/db"
-	"github.com/mxpv/podsync/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/db"
+	"github.com/daleiii/podsync-web/pkg/model"
 )
 
 type Server struct {

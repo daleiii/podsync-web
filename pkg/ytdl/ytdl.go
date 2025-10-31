@@ -16,11 +16,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mxpv/podsync/pkg/feed"
+	"github.com/daleiii/podsync-web/pkg/feed"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/mxpv/podsync/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/model"
 )
 
 const (

@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 
-	"github.com/mxpv/podsync/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/model"
 )
 
 // EpisodeResponse represents an episode in API responses

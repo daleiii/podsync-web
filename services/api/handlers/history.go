@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mxpv/podsync/pkg/db"
-	"github.com/mxpv/podsync/pkg/history"
-	"github.com/mxpv/podsync/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/db"
+	"github.com/daleiii/podsync-web/pkg/history"
+	"github.com/daleiii/podsync-web/pkg/model"
 	log "github.com/sirupsen/logrus"
 )
 

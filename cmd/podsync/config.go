@@ -12,12 +12,12 @@ import (
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/mxpv/podsync/pkg/db"
-	"github.com/mxpv/podsync/pkg/feed"
-	"github.com/mxpv/podsync/pkg/fs"
-	"github.com/mxpv/podsync/pkg/model"
-	"github.com/mxpv/podsync/pkg/ytdl"
-	"github.com/mxpv/podsync/services/web"
+	"github.com/daleiii/podsync-web/pkg/db"
+	"github.com/daleiii/podsync-web/pkg/feed"
+	"github.com/daleiii/podsync-web/pkg/fs"
+	"github.com/daleiii/podsync-web/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/ytdl"
+	"github.com/daleiii/podsync-web/services/web"
 )
 
 type Config struct {

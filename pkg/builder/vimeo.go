@@ -6,12 +6,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/mxpv/podsync/pkg/feed"
+	"github.com/daleiii/podsync-web/pkg/feed"
 	"github.com/pkg/errors"
 	"github.com/silentsokolov/go-vimeo/vimeo"
 	"golang.org/x/oauth2"
 
-	"github.com/mxpv/podsync/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/model"
 )
 
 const (

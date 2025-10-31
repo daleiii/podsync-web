@@ -7,7 +7,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/mxpv/podsync/pkg/config"
+	"github.com/daleiii/podsync-web/pkg/config"
 	"github.com/pelletier/go-toml"
 	log "github.com/sirupsen/logrus"
 )

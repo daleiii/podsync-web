@@ -10,14 +10,14 @@ import (
 	"time"
 
 	"github.com/BrianHicks/finch/duration"
-	"github.com/mxpv/podsync/pkg/feed"
+	"github.com/daleiii/podsync-web/pkg/feed"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/api/option"
 	"google.golang.org/api/youtube/v3"
 
-	"github.com/mxpv/podsync/pkg/model"
-	"github.com/mxpv/podsync/pkg/ytdl"
+	"github.com/daleiii/podsync-web/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/ytdl"
 )
 
 type Downloader interface {

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/mxpv/podsync/pkg/progress"
+	"github.com/daleiii/podsync-web/pkg/progress"
 	log "github.com/sirupsen/logrus"
 )
 

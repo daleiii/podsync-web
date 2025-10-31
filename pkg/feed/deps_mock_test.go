@@ -9,7 +9,7 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	model "github.com/mxpv/podsync/pkg/model"
+	model "github.com/daleiii/podsync-web/pkg/model"
 )
 
 // MockfeedProvider is a mock of feedProvider interface.

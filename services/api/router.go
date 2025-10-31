@@ -4,14 +4,14 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/mxpv/podsync/pkg/db"
-	"github.com/mxpv/podsync/pkg/feed"
-	"github.com/mxpv/podsync/pkg/history"
-	"github.com/mxpv/podsync/pkg/progress"
-	"github.com/mxpv/podsync/pkg/ytdl"
-	"github.com/mxpv/podsync/services/api/handlers"
-	"github.com/mxpv/podsync/services/api/middleware"
-	"github.com/mxpv/podsync/services/web"
+	"github.com/daleiii/podsync-web/pkg/db"
+	"github.com/daleiii/podsync-web/pkg/feed"
+	"github.com/daleiii/podsync-web/pkg/history"
+	"github.com/daleiii/podsync-web/pkg/progress"
+	"github.com/daleiii/podsync-web/pkg/ytdl"
+	"github.com/daleiii/podsync-web/services/api/handlers"
+	"github.com/daleiii/podsync-web/services/api/middleware"
+	"github.com/daleiii/podsync-web/services/web"
 )
 
 // Router sets up all API routes

@@ -5,11 +5,11 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/mxpv/podsync/pkg/feed"
+	"github.com/daleiii/podsync-web/pkg/feed"
 	"github.com/pkg/errors"
 	soundcloudapi "github.com/zackradisic/soundcloud-api"
 
-	"github.com/mxpv/podsync/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/model"
 )
 
 type SoundCloudBuilder struct {

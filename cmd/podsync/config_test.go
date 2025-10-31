@@ -5,11 +5,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mxpv/podsync/services/web"
+	"github.com/daleiii/podsync-web/services/web"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/mxpv/podsync/pkg/model"
+	"github.com/daleiii/podsync-web/pkg/model"
 )
 
 func TestLoadConfig(t *testing.T) {

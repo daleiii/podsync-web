@@ -10,10 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mxpv/podsync/pkg/db"
-	"github.com/mxpv/podsync/pkg/feed"
-	"github.com/mxpv/podsync/pkg/model"
-	"github.com/mxpv/podsync/services/api/models"
+	"github.com/daleiii/podsync-web/pkg/db"
+	"github.com/daleiii/podsync-web/pkg/feed"
+	"github.com/daleiii/podsync-web/pkg/model"
+	"github.com/daleiii/podsync-web/services/api/models"
 	log "github.com/sirupsen/logrus"
 )
 
