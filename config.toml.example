@@ -1,0 +1,251 @@
+# Podsync Web Configuration Example
+# Copy this file to config.toml and customize for your setup
+# Note: You can also configure Podsync via the web UI at http://localhost:8080
+
+# =============================================================================
+# Server Configuration
+# =============================================================================
+[server]
+  # Public hostname for RSS feed URLs (optional, useful behind reverse proxy)
+  # If set, RSS feed URLs will use this hostname instead of the server's IP
+  # hostname = "https://podsync.yourdomain.com"
+
+  # Port for API and web UI (internal port, map with -p in Docker)
+  port = 8080
+
+  # Frontend dev server port (only used during development)
+  frontend_port = 5173
+
+  # Bind address: "*" for all interfaces, "127.0.0.1" for localhost only
+  bind_address = "*"
+
+  # Base path for all routes (e.g., "/podsync" for https://domain.com/podsync/)
+  path = ""
+
+  # Enable TLS/HTTPS
+  tls = false
+  # certificate_path = "/path/to/cert.pem"
+  # key_file_path = "/path/to/key.pem"
+
+  # Enable web UI (can also be controlled via PODSYNC_WEB_UI env var)
+  web_ui = true
+
+  # HTTP Basic Authentication (optional)
+  [server.basic_auth]
+    enabled = false
+    # username = "admin"
+    # password = "secure-password"
+
+# =============================================================================
+# Storage Configuration
+# =============================================================================
+[storage]
+  # Storage type: "local" or "s3"
+  type = "local"
+
+  # Local filesystem storage
+  [storage.local]
+    # Data directory for downloaded media files
+    # For Docker: use /app/data (mounted as volume)
+    # For local: use absolute path like /home/user/podsync/data
+    data_dir = "/app/data"
+
+  # S3-compatible storage (MinIO, AWS S3, DigitalOcean Spaces, Wasabi, etc.)
+  # Uncomment and configure if using S3
+  # [storage.s3]
+  #   bucket = "my-podsync-bucket"
+  #   region = "us-west-2"
+  #   endpoint_url = "https://s3.us-west-2.amazonaws.com"
+  #   prefix = "podsync/"  # Optional path prefix
+  #   access_key = "AKIAIOSFODNN7EXAMPLE"  # Optional, can use IAM roles
+  #   secret_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"  # Optional
+
+# =============================================================================
+# Database Configuration
+# =============================================================================
+[database]
+  # BadgerDB directory for metadata storage
+  # For Docker: use /app/db (mounted as volume)
+  dir = "/app/db"
+
+# =============================================================================
+# Downloader Configuration
+# =============================================================================
+[downloader]
+  # Auto-update yt-dlp every 24 hours
+  self_update = true
+
+  # Update channel: "stable", "nightly", or "master"
+  update_channel = "stable"
+
+  # Lock to specific version (optional)
+  # update_version = "2023.07.06"
+
+  # Download timeout per episode (supports: 30s, 5m, 1h)
+  timeout = "30m"
+
+# =============================================================================
+# API Tokens
+# =============================================================================
+[tokens]
+  # API keys for video platforms (supports rotation with multiple keys)
+  # Get YouTube API key: https://console.cloud.google.com/apis/credentials
+  # Get Vimeo API key: https://developer.vimeo.com/apps
+
+  # YouTube API key(s) - can provide multiple for rotation
+  youtube = ["YOUR_YOUTUBE_API_KEY"]
+
+  # Vimeo API key(s)
+  # vimeo = ["YOUR_VIMEO_API_KEY"]
+
+  # SoundCloud API key(s)
+  # soundcloud = ["YOUR_SOUNDCLOUD_KEY"]
+
+  # Twitch credentials (format: ["CLIENT_ID:CLIENT_SECRET"])
+  # twitch = ["client_id:client_secret"]
+
+# =============================================================================
+# History Tracking
+# =============================================================================
+[history]
+  # Enable job history tracking
+  enabled = true
+
+  # Days to retain history entries
+  retention_days = 30
+
+  # Maximum number of history entries to keep
+  max_entries = 1000
+
+# =============================================================================
+# Global Cleanup Policy
+# =============================================================================
+[cleanup]
+  # Keep last N episodes per feed (applies to all feeds unless overridden)
+  # Set to 0 to disable automatic cleanup
+  keep_last = 10
+
+# =============================================================================
+# Feed Definitions
+# =============================================================================
+# Define your feeds below. Each feed needs a unique ID.
+# Feed URLs will be: http://localhost:8080/feeds/[FEED_ID].xml
+
+[feeds]
+  # Example: YouTube channel as audio podcast
+  [feeds.my_channel]
+    # Source URL (YouTube channel, playlist, Vimeo user, etc.)
+    url = "https://www.youtube.com/channel/UCxxxxxxxxxxxxxxxxxxx"
+
+    # Update frequency (supports: 1h, 12h, 24h, or cron expression)
+    update_period = "12h"
+    # Alternative: use cron expression for more control
+    # cron_schedule = "0 */6 * * *"  # Every 6 hours
+
+    # Output format: "audio" or "video"
+    format = "audio"
+
+    # Quality: "high" or "low"
+    quality = "high"
+
+    # Max video height (e.g., 720, 1080) - only for video format
+    # max_height = 720
+
+    # Number of episodes to fetch per update
+    page_size = 50
+
+    # Playlist sorting: "asc" (oldest first) or "desc" (newest first)
+    playlist_sort = "desc"
+
+    # Make feed private (requires authentication)
+    private_feed = false
+
+    # Include in OPML export
+    opml = true
+
+    # Feed-specific cleanup (overrides global cleanup)
+    # [feeds.my_channel.clean]
+    #   keep_last = 5
+
+    # Content filters
+    [feeds.my_channel.filters]
+      # Include only if title matches this regex
+      # title = ".*podcast.*"
+
+      # Exclude if title matches this regex (useful for shorts)
+      # not_title = "#shorts"
+
+      # Include only if description matches
+      # description = ""
+
+      # Exclude if description matches
+      # not_description = ""
+
+      # Minimum episode duration (auto-ignores shorts under 60s by default)
+      min_duration = "1m"
+
+      # Maximum episode duration
+      # max_duration = "2h"
+
+      # Minimum episode age
+      # min_age = ""
+
+      # Maximum episode age (e.g., "30d" for last 30 days only)
+      # max_age = "30d"
+
+    # Custom feed metadata
+    # [feeds.my_channel.custom]
+    #   cover_art = "https://example.com/cover.jpg"  # Custom artwork URL
+    #   cover_art_quality = "high"  # "high" or "low"
+    #   category = "Technology"
+    #   subcategories = ["Tech News", "Gadgets"]
+    #   explicit = false
+    #   language = "en"
+    #   author = "Channel Name"
+    #   title = "Custom Feed Title"
+    #   description = "Custom feed description"
+    #   owner_name = "Your Name"
+    #   owner_email = "your@email.com"
+    #   link = "https://your-website.com"
+
+  # Example: YouTube playlist as video podcast
+  # [feeds.my_playlist]
+  #   url = "https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxxxxx"
+  #   format = "video"
+  #   quality = "high"
+  #   max_height = 720
+  #   update_period = "24h"
+
+  # Example: Vimeo user as audio podcast
+  # [feeds.vimeo_user]
+  #   url = "https://vimeo.com/username"
+  #   format = "audio"
+  #   quality = "high"
+  #   update_period = "12h"
+
+# =============================================================================
+# Additional Configuration Notes
+# =============================================================================
+#
+# Environment Variables (override config.toml):
+# - PODSYNC_CONFIG_PATH - Path to this config file
+# - PODSYNC_YOUTUBE_API_KEY - YouTube API key(s)
+# - PODSYNC_VIMEO_API_KEY - Vimeo API key(s)
+# - PODSYNC_SOUNDCLOUD_API_KEY - SoundCloud API key(s)
+# - PODSYNC_TWITCH_API_KEY - Twitch credentials
+# - PODSYNC_WEB_UI - Enable/disable web UI
+# - PODSYNC_HISTORY_ENABLED - Enable/disable history
+# - PODSYNC_HISTORY_RETENTION_DAYS - History retention period
+# - PODSYNC_HISTORY_MAX_ENTRIES - Max history entries
+# - TZ - Timezone (e.g., America/Los_Angeles)
+#
+# Multiple API keys can be space-separated for rotation:
+# PODSYNC_YOUTUBE_API_KEY="key1 key2 key3"
+#
+# Web UI: http://localhost:8080
+# RSS Feed: http://localhost:8080/feeds/[FEED_ID].xml
+# API Docs: See README.md REST API section
+#
+# For more information:
+# - GitHub: https://github.com/daleiii/podsync-web
+# - Documentation: https://github.com/daleiii/podsync-web/blob/main/README.md

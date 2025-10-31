@@ -1,0 +1,61 @@
+# Version control
+.git/
+.gitignore
+.github/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build outputs (will be rebuilt in Docker)
+bin/
+html/
+dist/
+frontend/db/
+
+# Dependencies (will be installed in Docker)
+node_modules/
+frontend/node_modules/
+vendor/
+
+# Application data (should be mounted as volumes)
+data/
+db/
+
+# Configuration files (should be mounted or set via env vars)
+config.toml
+config.toml.backup
+
+# Logs
+*.log
+logs/
+podsync.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation (not needed in image)
+*.md
+!CLAUDE.md
+docs/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Development files
+*.test
+*.prof
+coverage.txt
+*.tmp
+*.temp
+.env
+.env.local
+
+# Claude Code
+.claude/

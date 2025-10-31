@@ -1,0 +1,43 @@
+services:
+  podsync:
+    container_name: podsync
+    image: deltathreed/podsync-web:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - podsync_data:/app/data
+      - podsync_db:/app/db
+      # Optional: mount config file if you want to use file-based configuration
+      # - ./config.toml:/app/config.toml
+    environment:
+      # Timezone (recommended for proper scheduling and logging)
+      - TZ=America/Los_Angeles
+
+      # API Keys - uncomment and configure as needed
+      # Multiple keys can be space-separated for automatic rotation
+      # - PODSYNC_YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+      # - PODSYNC_VIMEO_API_KEY=${VIMEO_API_KEY}
+      # - PODSYNC_SOUNDCLOUD_API_KEY=${SOUNDCLOUD_API_KEY}
+      # - PODSYNC_TWITCH_API_KEY=${TWITCH_CLIENT_ID}:${TWITCH_CLIENT_SECRET}
+
+      # Web UI settings
+      # - PODSYNC_WEB_UI=true
+
+      # History tracking (enabled by default)
+      # - PODSYNC_HISTORY_ENABLED=true
+      # - PODSYNC_HISTORY_RETENTION_DAYS=30
+      # - PODSYNC_HISTORY_MAX_ENTRIES=1000
+
+      # Optional: Override config file path
+      # - PODSYNC_CONFIG_PATH=/app/config.toml
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  podsync_data:
+  podsync_db:
