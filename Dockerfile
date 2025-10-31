@@ -9,6 +9,13 @@ WORKDIR /build
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs
 
+# Copy go.mod and go.sum first for better caching
+COPY go.mod go.sum ./
+
+# Download dependencies (only external ones, local packages will be copied next)
+RUN go mod download
+
+# Copy the rest of the source code
 COPY . .
 
 RUN make build
