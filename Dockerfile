@@ -9,10 +9,10 @@ WORKDIR /build
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs
 
-# Copy everything
+# Copy source code
 COPY . .
 
-# Build (will download dependencies as needed)
+# Build frontend and backend
 RUN make build
 
 # Download yt-dlp
