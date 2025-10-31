@@ -12,6 +12,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
 # Copy source code
 COPY . .
 
+# Debug: Check what was copied
+RUN ls -la && echo "=== pkg directory ===" && ls -la pkg/ && echo "=== go.mod ===" && head -5 go.mod && echo "=== cmd/podsync ===" && ls -la cmd/podsync/
+
 # Build frontend and backend
 RUN make build
 
