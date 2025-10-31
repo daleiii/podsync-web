@@ -34,7 +34,7 @@ LDFLAGS := "-s -w -X 'main.version=${TAG}' -X 'main.commit=${COMMIT}' -X 'main.d
 
 .PHONY: build
 build: build-frontend
-	go build -trimpath -tags netgo -ldflags ${LDFLAGS} -o bin/podsync ./cmd/podsync
+	go build -mod=vendor -trimpath -tags netgo -ldflags ${LDFLAGS} -o bin/podsync ./cmd/podsync
 
 #
 # Build a local Docker image
