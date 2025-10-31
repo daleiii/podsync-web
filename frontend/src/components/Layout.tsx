@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Radio, Rss, Settings, Clock } from 'lucide-react';
+import { LayoutDashboard, Radio, Rss, Settings, Clock, ExternalLink } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 const menuItems = [
@@ -59,8 +59,30 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
         {/* Footer */}
         <div className="p-4 border-t border-gray-200">
-          <div className="text-xs text-gray-500 text-center">
-            Podcast RSS Manager
+          <div className="text-xs text-gray-500 space-y-2">
+            <div className="text-center">
+              Podcast RSS Manager
+            </div>
+            <a
+              href="https://github.com/daleiii/podsync-web"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              <span>GitHub</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+            <div className="text-center text-gray-400">
+              Based on{' '}
+              <a
+                href="https://github.com/mxpv/podsync"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-700 transition-colors"
+              >
+                mxpv/podsync
+              </a>
+            </div>
           </div>
         </div>
       </aside>
