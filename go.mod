@@ -9,13 +9,14 @@ require (
 	github.com/eduncan911/podcast v1.4.2
 	github.com/gilliek/go-opml v1.0.0
 	github.com/golang/mock v1.6.0
+	github.com/google/uuid v1.6.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/jessevdk/go-flags v1.6.1
 	github.com/nicklaw5/helix v1.25.0
 	github.com/pelletier/go-toml v1.9.5
 	github.com/pkg/errors v0.9.1
 	github.com/robfig/cron/v3 v3.0.1
-	github.com/silentsokolov/go-vimeo v0.0.0-20190116124215-06829264260c
+	github.com/silentsokolov/go-vimeo v2.2.2+incompatible
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.11.1
 	github.com/zackradisic/soundcloud-api v0.1.8
@@ -40,7 +41,6 @@ require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
-	github.com/google/uuid v1.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.6 // indirect
 	github.com/googleapis/gax-go/v2 v2.15.0 // indirect
 	github.com/grafov/m3u8 v0.11.1 // indirect
